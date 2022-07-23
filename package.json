@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Alexsandro-01/task-force-backend#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
+    "eslint-config-trybe-backend": "^1.0.4",
     "express": "^4.18.1",
     "nodemon": "^2.0.19",
     "sequelize": "^6.21.3",
