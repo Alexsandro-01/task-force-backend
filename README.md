@@ -1,6 +1,6 @@
 # Boas vindas ao repositório de back-end do `Task Force`
 
-Backend  de uma aplicação de Todo list para pratiacar Sequelize, Node,  Express, Typescript, POO e deploy no Heroku
+Backend  de uma aplicação de Todo list para praticar Sequelize, Node,  Express, Typescript, POO e deploy no Heroku
 
 ## Requisitos
 
