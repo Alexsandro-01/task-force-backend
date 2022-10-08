@@ -2,6 +2,8 @@
 
 Backend  de uma aplicação de Todo list para pratiacar Sequelize, Node,  Express, Typescript, POO e deploy no Heroku
 
+> **Note**: O projeto ainda está em desenvolvimento. 
+
 ## Requisitos
 
 
