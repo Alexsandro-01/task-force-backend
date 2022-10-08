@@ -1,9 +1,9 @@
-import { Model, STRING, DATE, BOOLEAN } from "sequelize";
+import { Model, STRING, DATE, BOOLEAN, INTEGER, NOW, literal } from "sequelize";
 import Users from "./Users";
 import db from '.';
 
 class Tasks extends Model {
-  id!: string;
+  id!: number;
   tasks!: string;
   userId!: string;
   active!: string;
@@ -15,7 +15,7 @@ Tasks.init({
   id: {
     primaryKey: true,
     autoIncrement: true,
-    type: STRING,
+    type: INTEGER,
   },
   tasks: {
     allowNull: false,
@@ -35,21 +35,17 @@ Tasks.init({
     type: BOOLEAN,
   },
   createdAt: {
+    defaultValue: literal('CURRENT_TIMESTAMP'),
     allowNull: false,
     field: 'created_at',
     type: DATE,
   },
-  updatedAt: {
-    allowNull: false,
-    field: 'updated_at',
-    type: DATE,
-  },
 },
 {
+  timestamps: false,
   underscored: true,
   sequelize: db,
-  modelName: 'tasks',
-  timestamps: true
+  modelName: 'Task',
 });
 
 Tasks.belongsTo(Users, { foreignKey: 'userId' });
