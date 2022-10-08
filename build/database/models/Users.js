@@ -26,19 +26,15 @@ Users.init({
         type: sequelize_1.STRING,
     },
     createdAt: {
+        defaultValue: (0, sequelize_1.literal)('CURRENT_TIMESTAMP'),
         allowNull: false,
         field: 'created_at',
         type: sequelize_1.DATE,
     },
-    updatedAt: {
-        allowNull: false,
-        field: 'updated_at',
-        type: sequelize_1.DATE,
-    },
 }, {
+    timestamps: false,
     underscored: true,
     sequelize: _1.default,
-    modelName: 'users',
-    timestamps: true
+    modelName: 'User',
 });
 exports.default = Users;
