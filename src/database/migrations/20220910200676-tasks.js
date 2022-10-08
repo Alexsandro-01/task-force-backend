@@ -3,7 +3,8 @@ module.exports = {
     await queryInterface.createTable('tasks', {
       id: {
         primaryKey: true,
-        type: Sequelize.STRING,
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
       },
       tasks: {
         allowNull: false,
@@ -23,12 +24,8 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       createdAt: {
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         field: 'created_at',
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        field: 'updated_at',
         allowNull: false,
         type: Sequelize.DATE,
       },

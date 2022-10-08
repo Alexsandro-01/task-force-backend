@@ -12,7 +12,7 @@ Tasks.init({
     id: {
         primaryKey: true,
         autoIncrement: true,
-        type: sequelize_1.STRING,
+        type: sequelize_1.INTEGER,
     },
     tasks: {
         allowNull: false,
@@ -32,20 +32,16 @@ Tasks.init({
         type: sequelize_1.BOOLEAN,
     },
     createdAt: {
+        defaultValue: (0, sequelize_1.literal)('CURRENT_TIMESTAMP'),
         allowNull: false,
         field: 'created_at',
         type: sequelize_1.DATE,
     },
-    updatedAt: {
-        allowNull: false,
-        field: 'updated_at',
-        type: sequelize_1.DATE,
-    },
 }, {
+    timestamps: false,
     underscored: true,
     sequelize: _1.default,
-    modelName: 'tasks',
-    timestamps: true
+    modelName: 'Task',
 });
 Tasks.belongsTo(Users_1.default, { foreignKey: 'userId' });
 exports.default = Tasks;
