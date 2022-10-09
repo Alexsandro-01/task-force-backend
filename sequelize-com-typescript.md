@@ -94,6 +94,8 @@ export = config;
 
 Caso o objeto process acuse erro, inclua em sua aplicação o pacote @types/node como dependência de desenvolvimento.
 
+> **Note**: Deixe o arquivo `.env` na raíz do repositório
+
 A exportação do módulo deve ser feita utilizando somente export ao invés de export default ou export const, para que a transpilação o transforme em module.exports. O que é reconhecido pelo sequelize-cli.
 
 O tipo Options, importando da lib sequelize, deve assegurar que os atributos de configuração respeitarão os padrões utilizados no momento da inicialização do Sequelize na API. Faremos essa inicialização adiante.
