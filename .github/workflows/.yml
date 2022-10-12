@@ -1,7 +1,7 @@
 on: [push, pull_request]
 
 jobs:
-  run-action:
+  eslint:
     runs-on: ubuntu-latest
     steps:
       - name: Verifica o repositório do Git
