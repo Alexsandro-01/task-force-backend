@@ -1,7 +1,7 @@
 on: [push, pull_request]
 
 jobs:
-  evaluator:
+  runs-action:
     runs-on: ubuntu-latest
     steps:
       - name: Verifica o repositório do Git
@@ -14,9 +14,6 @@ jobs:
       
       - name: Instalando as dependências
         run: npm ci
-
-      - name: Executando o lint para verificar se a erros
-        run: npx eslint .
 
       - name: Executando os testes da aplicação
         run: npm test
