@@ -5,7 +5,7 @@
     "request": "launch",
     "runtimeArgs": [
       "run-script",
-      "dev"
+      "test"
     ],
     "runtimeExecutable": "npm",
     "skipFiles": [

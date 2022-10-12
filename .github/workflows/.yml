@@ -17,3 +17,6 @@ jobs:
 
       - name: Executando o lint para verificar se a erros
         run: npx eslint .
+
+      - name: Executando os testes da aplicação
+        run: npm run test
