@@ -1,19 +1,19 @@
 on: [push, pull_request]
 
 jobs:
-  runs-action:
+  run-action:
     runs-on: ubuntu-latest
     steps:
       - name: Verifica o repositório do Git
         uses: actions/checkout@v3
 
       - name: Instala o node com a versão
-        uses:  actions/setup-node@v3
+        uses:  actions/setup-node@v
         with:
           node-version: 16
       
       - name: Instalando as dependências
         run: npm ci
 
-      - name: Executando os testes da aplicação
-        run: npm test
+      - name: Executando o lint para verificar se a erros
+        run: npx eslint .
