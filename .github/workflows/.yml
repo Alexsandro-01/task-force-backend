@@ -15,11 +15,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
+
       - name: Instalando dependencias
       - run: npm ci
+
       - name: Rodando lint
       - run: npm run lint
+
       - name: criando o build
       - run: npx -y tsc
+      
       - name: rodando os testes
       - run: mocha ./build/tests/integration/*.js -t 10000 --exit
