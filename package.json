@@ -4,7 +4,8 @@
   "description": "Backend  de uma aplicação de To do list para pratiacar Sequelize, express e deploy no Heroku",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register ./src/tests/integration/*.{test,spec}.ts -t 10000 --exit",
+    "test": "mocha ./build/tests/integration/*.js -t 10000 --exit",
+    "test:dev": "mocha -r ts-node/register ./src/tests/integration/*.{test,spec}.ts -t 10000 --exit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "dev": "nodemon src/index.ts",
     "db:create": "npx -y tsc && npx sequelize db:drop && npx sequelize db:create",
