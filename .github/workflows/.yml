@@ -22,8 +22,8 @@ jobs:
       - name: Rodando lint
       - run: npm run lint
 
-      - name: criando o build
-      - run: npx -y tsc
-      
-      - name: rodando os testes
-      - run: mocha ./build/tests/integration/*.js -t 10000 --exit
+      # - name: criando o build
+      # - run: npx -y tsc
+
+      # - name: rodando os testes
+      # - run: mocha ./build/tests/integration/*.js -t 10000 --exit
