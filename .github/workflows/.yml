@@ -21,3 +21,6 @@ jobs:
 
       - name: Executando o lint para verificar se a erros
         run: npm run lint
+
+      - name: Executando o lint para verificar se a erros
+        run: npm run test:dev
