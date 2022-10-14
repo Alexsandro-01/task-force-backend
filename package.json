@@ -10,7 +10,7 @@
     "dev": "nodemon src/index.ts",
     "db:create": "npx -y tsc && npx sequelize db:drop && npx sequelize db:create",
     "db:reset": "npx sequelize db:migrate && npx sequelize db:seed:all",
-    "build": "npx -y tsc"
+    "build": "npx tsc"
   },
   "repository": {
     "type": "git",
