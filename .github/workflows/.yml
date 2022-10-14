@@ -5,22 +5,16 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  eslint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verifica o repositório do Git
-        uses: actions/checkout@v2
+  build:
 
-      - name: Instala o node com a versão
-        uses:  actions/setup-node@v1
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 14
-      
-      - name: Instalando as dependências
-        run: npm install
-
-      - name: Executando o lint para verificar se a erros
-        run: npm run lint
-
-      - name: Executando o lint para verificar se a erros
-        run: npm run test:dev
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
