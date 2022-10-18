@@ -15,5 +15,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
+      - name: Instalando dependências
       - run: npm ci
+      - name: Rodando ESlint
+      - run: npm run lint
+      - name: Rodando os tests
       - run: npm test
