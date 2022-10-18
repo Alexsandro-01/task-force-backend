@@ -2,6 +2,7 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import jwt from 'jsonwebtoken';
+import fs from 'fs/promises';
 
 import server from '../../server';
 import Users from '../../database/models/Users';
@@ -23,6 +24,7 @@ describe('Behavior /login route', () => {
     beforeEach(() => {
       sinon.stub(Users, 'findOne').resolves(user as unknown as Users);
       sinon.stub(jwt, 'sign').callsFake(() => responseValidLogin.token);
+      sinon.stub(fs, 'readFile').resolves('SuaChaveDoJWT');
     });
 
     afterEach(sinon.restore);
