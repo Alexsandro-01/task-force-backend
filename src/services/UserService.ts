@@ -28,7 +28,7 @@ class UserService implements IUserService {
     }
 
     await Validate.password(_payload.password, response?.password as string);
-    const token = makeToken({
+    const token = await makeToken({
       key: response?.id as string,
     });
 
