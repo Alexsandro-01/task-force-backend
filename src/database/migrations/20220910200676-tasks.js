@@ -6,7 +6,7 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER,
       },
-      tasks: {
+      task: {
         allowNull: false,
         type: Sequelize.STRING,
       },

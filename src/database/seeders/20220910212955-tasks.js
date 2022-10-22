@@ -4,12 +4,12 @@ module.exports = {
       'tasks',
       [
         {
-          tasks: 'Lavar Louça',
+          task: 'Lavar Louça',
           user_id: '8381f5b5-f51f-40f4-9e79-19ba2d86057c',
           active: true,
         },
         {
-          tasks: 'Lavar roupa',
+          task: 'Lavar roupa',
           user_id: '8381f5b5-f51f-40f4-9e79-19ba2d86057c',
           active: true,
         },
