@@ -58,3 +58,7 @@ export interface ILogedUser {
   name: string,
   token: string,
 }
+
+export interface tokenData {
+  key: string
+}
