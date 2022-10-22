@@ -6,7 +6,7 @@ class Validate {
     const isValid = await bcrypt.compare(reqPasswaord, userPassword);
 
     if (!isValid) {
-      ValidationError.Unauthorized();
+      ValidationError.Unauthorized('Invalid email or password, try again.');
     }
   }
 }
