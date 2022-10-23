@@ -19,7 +19,7 @@ export async function veryfyToken(token: string): Promise<tokenData | undefined>
     return data as tokenData;
 
   } catch (error) {
-    ValidationError.Unauthorized('Token inválido ou ausente');
+    ValidationError.Unauthorized('Empyt or invalid token');
   }
 }
 
