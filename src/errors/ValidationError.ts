@@ -13,7 +13,7 @@ class ValidationError {
 
   static internalServerError(): void {
     throw new Error(
-      'Peço perdão pelo transtorno, mas o serviço está indisponível. Por favor tente mais tarde.'
+      'Sorry for the inconvenience, but the service is unavailable. Please try again later.'
     );
   }
 }
