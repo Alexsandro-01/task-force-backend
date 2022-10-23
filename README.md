@@ -1,8 +1,11 @@
 # Boas vindas ao repositório de back-end do `Task Force`
 
-Backend  de uma aplicação de Todo list para praticar Sequelize, Node,  Express, Typescript, POO e deploy no Heroku
+Backend  de uma aplicação de Todo list para praticar Sequelize, Node,  Express, Typescript, POO e CI com Github Actions.
 
-> **Note**: O projeto ainda está em desenvolvimento. 
+> **Note**: O projeto ainda está em desenvolvimento.
+
+Já estão implementadas as rotas de `Login` e de `criação de tarefas`, assim como seus respectivos testes.
+Os próximos passos são implementar as rotas de `criação de usuários` e de `edição de tarefas`, assim como seus respectivos testes.
 
 ## Requisitos
 
