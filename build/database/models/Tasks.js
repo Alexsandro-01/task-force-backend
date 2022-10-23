@@ -14,7 +14,7 @@ Tasks.init({
         autoIncrement: true,
         type: sequelize_1.INTEGER,
     },
-    tasks: {
+    task: {
         allowNull: false,
         type: sequelize_1.STRING,
     },

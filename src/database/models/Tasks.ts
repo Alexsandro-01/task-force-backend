@@ -4,7 +4,7 @@ import db from '.';
 
 class Tasks extends Model {
   id!: number;
-  tasks!: string;
+  task!: string;
   userId!: string;
   active!: string;
   createdAt!: Date;
@@ -17,7 +17,7 @@ Tasks.init({
     autoIncrement: true,
     type: INTEGER,
   },
-  tasks: {
+  task: {
     allowNull: false,
     type: STRING,
   },

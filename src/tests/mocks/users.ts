@@ -1,8 +1,14 @@
-const token = {
-  0: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-  1: 'eyJrZXkiOiI4MzgxZjViNS1mNTFmLTQwZjQtOWU3OS0xOWJhMmQ4NjA1N2MiLCJpYXQiOjE2NjU2MDUzNzB9',
+export const token = {
+  0: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.',
+  1: 'eyJrZXkiOiI4MzgxZjViNS1mNTFmLTQwZjQtOWU3OS0xOWJhMmQ4NjA1N2MiLCJpYXQiOjE2NjU2MDUzNzB9.',
   2: '8C6nD3fUIXmIjTbJ_hDYuPApr9jPPebQO8J3pXQO5ag',
 };
+
+export const invalidUserToken = {
+  0: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.",
+  1: "eyJrZXkiOiI4MzgxZjViNS1mNTFmLTQwZjQtOWU3OS0xOWJhMmQ4NjA1N2IifQ.",
+  2: "vHupvB-94P9JdV6PSsSCYLK_bdiN9-KHHc4dZVpKaPQ"
+}
 
 export const validUserLogin = {
   'email': 'ada.love@hotmail.com',
