@@ -8,5 +8,6 @@ const taskController = new TaskController(taskService);
 const taskRoute = Router();
 
 taskRoute.use('/create', taskController.create);
+taskRoute.use('/update/:id', taskController.update);
 
 export default taskRoute;
