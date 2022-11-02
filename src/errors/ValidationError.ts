@@ -11,10 +11,16 @@ class ValidationError {
     throw error;
   }
 
-  static internalServerError(): void {
+  static InternalServerError(): void {
     throw new Error(
       'Sorry for the inconvenience, but the service is unavailable. Please try again later.'
     );
+  }
+
+  static NotFoundError(message: string): void {
+    const error = new Error(message);
+    error.name = 'NotFound';
+    throw error;
   }
 }
 

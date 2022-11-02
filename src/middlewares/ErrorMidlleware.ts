@@ -10,6 +10,7 @@ function errorMidlleware(
 
   const status: Record<string, number> = {
     Unauthorized: 401,
+    NotFound: 404
   };
 
   if (error instanceof ZodError) {
