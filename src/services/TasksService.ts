@@ -1,8 +1,12 @@
 import Tasks from '../database/models/Tasks';
 import Users from '../database/models/Users';
-import { ICreateTask } from '../interfaces/ITasks';
 import { ITaskService } from '../interfaces/ITasksService';
-import { CreateTaskZodSchema } from '../interfaces/ITasks';
+import { 
+  CreateTaskZodSchema,
+  UpdatetaskZodSchema,
+  IUpdateTask,
+  ICreateTask
+} from '../interfaces/ITasks';
 import ValidationError from '../errors/ValidationError';
 import { veryfyToken } from '../utils/jwt';
 
@@ -17,36 +21,51 @@ class TaskService implements ITaskService {
       throw parsedtask.error;
     }
     
-    const token = this.checkToken(bearerToken);
-    
-    const data = await veryfyToken(token);
-
-    const user = await this.getUserById(data?.key as string);
-
-    if (user?.id !== data?.key) {
-      ValidationError.Unauthorized(this.invalidTokenMessage);
-    }
+    const id = await this.validateUser(bearerToken);
 
     try {
       await Tasks.create({
         ...payload,
-        userId: data?.key as string
+        userId: id as string
       });
     } catch (error) {
-      ValidationError.internalServerError();
+      ValidationError.InternalServerError();
     }
+  }
+
+  async updateTask(
+    payload: IUpdateTask,
+    bearerToken: string,
+    id: string): Promise<string | undefined> {
+
+    
+    await this.validateUser(bearerToken);
+    await this.validateTask(id, payload);
+
+    try {
+      const result = await Tasks.update(payload, { where: { id } });
+      if (result[0] !== 0) {
+        return 'All tasks have been updated';
+      }
+      return 'Nothing task was updated';
+    } catch (error) {
+      ValidationError.InternalServerError();
+    }
+    
+    
   }
 
   async getUserById(id: string): Promise<Users | null | undefined> {
     try {
       const user = await Users.findOne({
         raw: true,
-        where: { id }
+        where: { id },
+        attributes: ['id']
       });
 
       return user;
     } catch (error) {
-     ValidationError.internalServerError();
+     ValidationError.InternalServerError();
     }
   }
 
@@ -62,6 +81,42 @@ class TaskService implements ITaskService {
     }
 
     return token;
+  }
+
+  async validateUser(bearerToken: string): Promise<string> {
+    const token = this.checkToken(bearerToken);  
+    const data = await veryfyToken(token);
+    const user = await this.getUserById(data?.key as string);
+
+    if (!user) {
+      ValidationError.Unauthorized(this.invalidTokenMessage);
+    }
+
+    return data?.key as string;
+  }
+
+  async validateTask(id: string, payload: IUpdateTask): Promise<void> {
+    // https://eslint.org/docs/latest/rules/no-prototype-builtins
+    if (
+      !Object.prototype.hasOwnProperty.call(payload, 'task') &&
+      !Object.prototype.hasOwnProperty.call(payload, 'active')
+    ) {
+    ValidationError.BadRequest('Task or Active are required');
+    }
+
+    const parsedUpdate = UpdatetaskZodSchema.safeParse(payload);
+
+    if (!parsedUpdate.success) {
+      throw parsedUpdate.error;
+    }
+
+    const exist = await Tasks.findOne({
+      where: { id }
+    });
+
+    if (!exist) {
+      ValidationError.NotFoundError(`Task with id ${id} not found.`);
+    }
   }
 }
 

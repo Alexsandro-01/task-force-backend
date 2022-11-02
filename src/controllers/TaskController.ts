@@ -15,6 +15,15 @@ class TaskController {
     const response = await this._service.create(task, bearerToken as string);
     res.status(201).json(response);
   };
+
+  update = async (req: Request, res: Response): Promise<void> => {
+    const task = req.body;
+    const { id } = req.params;
+    const bearerToken = req.headers.authorization;
+
+    const response = await this._service.updateTask(task, bearerToken, id as string);
+    res.status(204).json(response);
+  };
 }
 
 export default TaskController;

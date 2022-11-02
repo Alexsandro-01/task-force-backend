@@ -7,67 +7,49 @@ Backend  de uma aplicação de Todo list para praticar Sequelize, Node,  Express
 Já estão implementadas as rotas de `Login` e de `criação de tarefas`, assim como seus respectivos testes.
 Os próximos passos são implementar as rotas de `criação de usuários` e de `edição de tarefas`, assim como seus respectivos testes.
 
-## Requisitos
+> **Note**: A documentação das rotas está disponível em um arquivo `.json` na raíz da aplicação com o nome `Task-Force.postman_collection.json`. A coleção foi exportada do Postman.
 
 
-1. Para criar um novo usuário enviar uma requisição `Post` para o endpoint `/user/create` com essa estrutura, a requisição retorna um token do usuário produzido pelo `JWT`.
+## Rodando o projeto localmente.
 
-```JSON
-// Request
-{
-  "name": "Fulano de Tal",
-  "email": "fulano@exemple.com",
-  "password": "12dh34"
-}
-```
-```JSON
-// Response
-{
-  "name": "Fulano de Tal",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NjA4NDU4OTl9.9B1sDV-UW7wW8x9t9c23en1sahU1BNmGU4y5HBPq-dQ"
-}
-```
+#
 
-2. Para realizar login, realizar uma requisição `Post` para o endpoint `/user/login` com essa estrutura, a requisição retorna um token do usuário produzido pelo `JWT`.
+> Requisitos:
 
-```JSON
-// Request
-{
-  "email": "fulano@exemple.com",
-  "password": "12dh34"
-}
+- Ter git instalado;
+- Ter um Mysql instalado ou um container docker;
+- Node versão 16;
+- Um cliente HTTP como o Postman, por exemplo;
+- Configurar o arquivo `.env.example` que está na raíz do projeto e renomeá-lo para `.env` e nele mudar as variáveis de ambiente para as da sua conexão com o Mysql.
+- Configurar o arquivo `.jwt.key.example` para `.jwt.key`. Esse arquivo possui a chave usada pelo jwt durante o desenvolvimento e assim você poderá fazer login com os usuários de teste cadastrados no banco de dados.
 
+
+1. Baixando para sua máquina.
+```bash
+  git clone git@github.com:Alexsandro-01/task-force-backend.git
 ```
 
-```JSON
-// Response
-{
-  "name": "Fulano de Tal",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NjA4NDU4OTl9.9B1sDV-UW7wW8x9t9c23en1sahU1BNmGU4y5HBPq-dQ"
-}
-
+2. Entando no diretório e instalando as dependências.
+```bash
+  cd task-force-backend && npm install
 ```
 
-3. Para criar uma nova tarefa, enviar para a rota `/tasks` uma requisição do tipo `Post` com a seguinte estrutura
-  * É necessário validação do usuário nessa rota, enviar o token do usuário no `header Authorization` da requisição.
-
-```JSON
-  {
-    "task": "Alguma tarefa aqui",
-    "active": true
-  }
+3. Criando o banco de dados e populando as tabelas com o Sequelize.
+```bash
+  npm run db:create && npm run db:create
 ```
-4. Para editar uma tarefa é necessário enviar uma requisição do tipo `Put` para a rota `/tasks/:id` enviando a estrutura abaixo e o `id` da tarefa nos parâmetros da URL.
 
-  -  É necessário validação do usuário nessa rota, enviar o token do usuário no `header Authorization` da requisição.
-  - Pode ser tanto uma edição do corpo da tarefa, quanto mudá-la para o estatus de finalizada, nesse caso mudando o campo `active` para `false`.
-
-```JSON
-  {
-    "task": "Alguma tarefa Editada aqui",
-    "active": true
-  }
+4. Rodando os testes.
+```bash
+  npm test
 ```
-5. Para deletar uma tarefa é necessário enviar uma requisição para a rota `/tasks/:id` enviando o `id` da tarefa nos parâmetros da URL.
 
-  -  É necessário validação do usuário nessa rota, enviar o token do usuário no `header Authorization` da requisição.
+5. Rodando os test coverage.
+```bash
+  npm run coverage
+```
+
+6. Iniciando a aplicação.
+```bash
+  npm run dev
+```
