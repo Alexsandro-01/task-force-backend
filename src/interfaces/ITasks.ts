@@ -33,3 +33,12 @@ export const UpdatetaskZodSchema = z.object({
 
 export type ICreateTask = z.infer<typeof CreateTaskZodSchema>
 export type IUpdateTask = z.infer<typeof UpdatetaskZodSchema>
+
+export interface Itask {
+  id: number,
+  task: string,
+  userId: string,
+  active: string,
+  createdAt: Date,
+  updatedAt: Date,
+}
