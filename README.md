@@ -36,7 +36,7 @@ Os próximos passos são implementar as rotas de `criação de usuários` e de `
 
 3. Criando o banco de dados e populando as tabelas com o Sequelize.
 ```bash
-  npm run db:create && npm run db:create
+  npm run db:create && npm run db:reset
 ```
 
 4. Rodando os testes.
