@@ -14,8 +14,8 @@ import Users from '../../database/models/Users';
 chai.use(chaiHttp);
 
 
-describe('Behavior /task route', () => {
-  const taskRoute = '/task/create';
+describe('Behavior /tasks route', () => {
+  const taskRoute = '/tasks/create';
   const validToken = `${token[0]}${token[1]}${token[2]}`;
 
   describe('Success cases', () => {

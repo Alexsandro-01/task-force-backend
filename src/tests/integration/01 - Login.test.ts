@@ -18,7 +18,7 @@ import {
 } from '../mocks/users';
 
 describe('Behavior /login route', () => {
-  const loginRoute = '/user/login';
+  const loginRoute = '/users/login';
 
   describe('Success cases', () => {
     beforeEach(() => {
