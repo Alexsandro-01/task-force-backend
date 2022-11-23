@@ -13,11 +13,11 @@ import { validNewTask } from '../mocks/tasks';
 
 chai.use(chaiHttp);
 
-describe.only('Behavior /task/update/:id route', () => {
-  const taskRoute = '/task/update/1';
+describe('Behavior /tasks/update/:id route', () => {
+  const taskRoute = '/tasks/update/1';
   const validToken = `${token[0]}${token[1]}${token[2]}`;
 
-  describe.skip('Success cases', () => {
+  describe('Success cases', () => {
     beforeEach(() => {
       Sinon.stub(Tasks, 'update').resolves([1]);
       Sinon.stub(Tasks, 'findOne').resolves(true as any);

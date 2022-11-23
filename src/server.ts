@@ -11,8 +11,8 @@ const api = express();
 
 api.use(express.json());
 
-api.use('/user', userRoute);
-api.use('/task', taskRoute);
+api.use('/users', userRoute);
+api.use('/tasks', taskRoute);
 
 api.use(errorMidlleware);
 

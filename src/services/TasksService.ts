@@ -5,7 +5,8 @@ import {
   CreateTaskZodSchema,
   UpdatetaskZodSchema,
   IUpdateTask,
-  ICreateTask
+  ICreateTask,
+  Itask
 } from '../interfaces/ITasks';
 import ValidationError from '../errors/ValidationError';
 import { veryfyToken } from '../utils/jwt';
@@ -53,6 +54,20 @@ class TaskService implements ITaskService {
     }
     
     
+  }
+
+  async getTasks(bearerToken: string): Promise<Itask[] | undefined> {
+    const userId = await this.validateUser(bearerToken);
+
+    try {
+      const result = await Tasks.findAll({
+        where: { userId }
+      });
+
+      return result;
+    } catch (error) {
+      ValidationError.InternalServerError();
+    }
   }
 
   async getUserById(id: string): Promise<Users | null | undefined> {

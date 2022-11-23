@@ -7,7 +7,8 @@ const taskController = new TaskController(taskService);
 
 const taskRoute = Router();
 
-taskRoute.use('/create', taskController.create);
-taskRoute.use('/update/:id', taskController.update);
+taskRoute.post('/create', taskController.create);
+taskRoute.post('/update/:id', taskController.update);
+taskRoute.get('/get', taskController.getTasks);
 
 export default taskRoute;
